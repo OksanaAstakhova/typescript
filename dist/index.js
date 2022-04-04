@@ -38,7 +38,7 @@ var Direction1;
     Direction1[Direction1["Left"] = 3] = "Left";
     Direction1[Direction1["Right"] = 4] = "Right";
 })(Direction1 || (Direction1 = {}));
-console.log(Direction1.Left); //3
+// console.log(Direction1.Left); //3
 var UserRoles;
 (function (UserRoles) {
     UserRoles["Admin"] = "SomeCrazyValue";
@@ -48,7 +48,6 @@ let user = {
     role: "StandartLoh",
 };
 const isAdmin = user.role === UserRoles.Admin;
-console.log(isAdmin);
 const client = {
     id: 1,
     name: "John",
@@ -77,3 +76,32 @@ const myUser = {
     status: "admin",
     age: 15,
 };
+const add = (x, y) => x + y;
+const sub = (x, y) => x - y;
+/**
+ * Classes
+ */
+class Person {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+    logId() {
+        console.log(this.id);
+    }
+    register() {
+        return `${this.name} is registered`;
+    }
+}
+const brad = new Person(1, "Brad");
+const mike = new Person(2, "Mike");
+brad.logId();
+//Subclass
+class Employee extends Person {
+    constructor(id, name, position) {
+        super(id, name);
+        this.position = position;
+    }
+}
+const emp = new Employee(3, "Sean", "Developer");
+console.log(emp);

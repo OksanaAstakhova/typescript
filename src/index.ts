@@ -45,7 +45,7 @@ enum Direction1 {
   Right,
 }
 
-console.log(Direction1.Left); //3
+// console.log(Direction1.Left); //3
 
 enum UserRoles {
   Admin = "SomeCrazyValue",
@@ -57,7 +57,7 @@ let user = {
 };
 
 const isAdmin = user.role === UserRoles.Admin;
-console.log(isAdmin);
+// console.log(isAdmin);
 
 /**
  * Objects
@@ -98,8 +98,8 @@ function log(message: string | number): void {
 
 interface Guitar {
   manufacturer: string;
-  strings: number;
-  material?: string;
+  readonly strings: number;
+  material?: string; // optional property
 }
 
 const Isabella: Guitar = {
@@ -107,17 +107,67 @@ const Isabella: Guitar = {
   strings: 6,
 };
 
-
 // type Point = number | string;
 // const p1: Point = 1
 
 type UserStatus = "admin" | "user" | "moderator";
 interface MyUser {
-    status: UserStatus;
-    age: number;
+  status: UserStatus;
+  age: number;
 }
 
 const myUser: MyUser = {
-    status: "admin",
-    age: 15,
+  status: "admin",
+  age: 15,
+};
+
+interface MathFunc {
+  (x: number, y: number): number;
 }
+
+const add: MathFunc = (x, y) => x + y;
+const sub: MathFunc = (x, y) => x - y;
+
+interface PersonInterface {
+  name: string;
+  register(): string;
+}
+
+/**
+ * Classes
+ */
+class Person implements PersonInterface {
+  private id: number; //private | protected | public by default
+  name: string;
+
+  constructor(id: number, name: string) {
+    this.id = id;
+    this.name = name;
+  }
+
+  logId() {
+    console.log(this.id);
+  }
+
+  register() {
+    return `${this.name} is registered`;
+  }
+}
+
+const brad = new Person(1, "Brad");
+const mike = new Person(2, "Mike");
+
+brad.logId();
+
+//Subclass
+class Employee extends Person {
+  position: string;
+
+  constructor(id: number, name: string, position: string) {
+    super(id, name);
+    this.position = position;
+  }
+}
+
+const emp = new Employee(3, "Sean", "Developer");
+console.log(emp);
